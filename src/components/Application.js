@@ -14,14 +14,16 @@ export default function Application() {
     interviewers: []
   });
 
-  const dailyAppointments = getAppointmentsForDay(state, state.day);
+  const appointments = getAppointmentsForDay(state, state.day);
   const setDay = (day) => setState({ ...state, day });
 
-  const appointmentList = dailyAppointments.map(appointment => {
+  const schedule = appointments.map(appointment => {
     return (
       <Appointment
         key={appointment.id}
-        {...appointment}
+        id={appointment.id}
+        time={appointment.time}
+        interview={appointment.interview}
       />
     );
   });
@@ -61,7 +63,7 @@ export default function Application() {
         />
       </section>
       <section className="schedule">
-        {appointmentList}
+        {schedule}
         <Appointment key="last" time="5pm" />
       </section>
     </main>
