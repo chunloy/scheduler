@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import DayList from "./DayList";
 import Appointment from "components/Appointment";
 import axios from "axios";
-import { getAppointmentsForDay } from "helpers/selectors";
+import { getAppointmentsForDay, getInterview } from "helpers/selectors";
 import "components/Application.scss";
 
 export default function Application() {
@@ -18,12 +18,13 @@ export default function Application() {
   const setDay = (day) => setState({ ...state, day });
 
   const schedule = appointments.map(appointment => {
+    const interview = getInterview(state, appointment.interview);
     return (
       <Appointment
         key={appointment.id}
         id={appointment.id}
         time={appointment.time}
-        interview={appointment.interview}
+        interview={interview}
       />
     );
   });
