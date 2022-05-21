@@ -1,3 +1,20 @@
-import { renderHook, act } from "@testing-library/react-hooks";
+import { useState } from "react";
 
-import useVisualMode from "hooks/useVisualMode";
+export default function useVisualMode(initial) {
+  const [mode, setMode] = useState(initial);
+  const [history, setHistory] = useState([initial]);
+
+  function transition(newMode, replace) {
+    setMode(newMode);
+    setHistory(prev => [...(replace ? prev.slice(0, -1) : prev), newMode]);
+  };
+
+  function back() {
+    if (history.length > 1) {
+      setMode(history[history.length - 2]);
+      setHistory(prev => [...prev].slice(0, -1));
+    }
+  };
+
+  return { mode, transition, back };
+}
