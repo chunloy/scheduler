@@ -28,7 +28,7 @@ export default function Form(props) {
         </form>
         <InterviewerList
           interviewers={props.interviewers}
-          value={interviewer}
+          value={interviewer && interviewer.id} //jc bandaid
           onChange={setInterviewer}
         />
       </section>
