@@ -34,10 +34,9 @@ export default function Application() {
     return axios.put(`api/appointments/${id}`, { interview })
       .then(() => {
         setState({ ...state, appointments });
-      })
-      .catch(error => console.error(error));
-
+      });
   }
+
   function cancelInterview(id) {
     const appointment = {
       ...state.appointments[id],
@@ -52,8 +51,7 @@ export default function Application() {
     return axios.delete(`api/appointments/${id}`)
       .then(() => {
         setState({ ...state, appointments });
-      })
-      .catch(error => console.error(error));
+      });
   }
 
   const schedule = appointments.map(appointment => {
