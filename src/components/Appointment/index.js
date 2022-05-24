@@ -11,12 +11,13 @@ import useVisualMode from "hooks/useVisualMode";
 
 import "components/Appointment/styles.scss";
 
-const EMPTY = "EMPTY";
-const SHOW = "SHOW";
-const CREATE = "CREATE";
-const SAVING = "SAVING";
-const DELETING = "DELETING";
 const CONFIRM = "CONFIRM";
+const CREATE = "CREATE";
+const DELETING = "DELETING";
+const EDIT = "EDIT";
+const EMPTY = "EMPTY";
+const SAVING = "SAVING";
+const SHOW = "SHOW";
 
 export default function Appointment(props) {
   const { mode, transition, back } = useVisualMode(props.interview ? SHOW : EMPTY);
@@ -24,13 +25,13 @@ export default function Appointment(props) {
   function save(name, interviewer) {
     const interview = {
       student: name,
-      interviewer
+      interviewer: interviewer.id
     };
 
     transition(SAVING);
 
     props.bookInterview(props.id, interview)
-      .then(() => transition(DELETING))
+      .then(() => transition(SHOW))
       .catch((error) => console.error(error));
   }
 
@@ -42,6 +43,8 @@ export default function Appointment(props) {
       .catch((error) => console.error(error));
   }
 
+  console.log(props.interview);
+  console.log(props.student);
   return (
     <article className="appointment">
       <Header time={props.time} />
@@ -54,6 +57,7 @@ export default function Appointment(props) {
           student={props.interview.student}
           interviewer={props.interview.interviewer}
           onDelete={() => transition(CONFIRM)}
+          onEdit={() => transition(EDIT)}
         />
       }
 
@@ -61,14 +65,24 @@ export default function Appointment(props) {
         <Form
           interviewers={props.interviewers}
           onSave={save}
-          onCancel={() => back()}
+          onCancel={back}
+        />
+      }
+
+      {mode === EDIT &&
+        <Form
+          student={props.interview.student}
+          interviewers={props.interviewers}
+          interviewer={props.interview.interviewer.id}
+          onSave={save}
+          onCancel={back}
         />
       }
 
       {mode === CONFIRM &&
         <Confirm
           message="Are you sure you would like to delete?"
-          onCancel={() => back()}
+          onCancel={back}
           onConfirm={deleteInterview}
         />
       }
