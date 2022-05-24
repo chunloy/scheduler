@@ -24,7 +24,7 @@ export default function useApplicationData() {
 
     return axios.put(`api/appointments/${id}`, { interview })
       .then(() => {
-        setState({ ...state, appointments });
+        setState({ ...state, appointments, days: countSpots(appointments, id) });
       });
   }
 
@@ -41,9 +41,32 @@ export default function useApplicationData() {
 
     return axios.delete(`api/appointments/${id}`)
       .then(() => {
-        setState({ ...state, appointments });
+        setState({ ...state, appointments, days: countSpots(appointments, id) });
       });
   }
+
+  const countSpots = (appointments, id) => {
+    const dayIndex = state.days.findIndex(day => day.name === state.day);
+
+    const appointmentsArray = [...state.days[dayIndex].appointments];
+    if (id && !appointmentsArray.includes(id)) appointmentsArray.push(id);
+
+    let remainingSpots = appointmentsArray.length;
+
+    appointmentsArray.forEach(id => {
+      if (appointments[id].interview) remainingSpots--;
+    });
+
+    const day = {
+      ...state.days[dayIndex],
+      spots: remainingSpots
+    };
+
+    const days = [...state.days];
+    days[dayIndex] = day;
+
+    return days;
+  };
 
   useEffect(() => {
     Promise.all([
