@@ -90,7 +90,7 @@ export default (props) => {
         <Form
           student={props.interview.student}
           interviewers={props.interviewers}
-          interviewer={props.interview.interviewer.id}
+          interviewer={props.interview.interviewer}
           onSave={save}
           onCancel={back}
         />
