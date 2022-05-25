@@ -47,13 +47,13 @@ export default function useApplicationData() {
 
   const countSpots = (appointments, id) => {
     const dayIndex = state.days.findIndex(day => day.name === state.day);
+    const appointmentsList = [...state.days[dayIndex].appointments];
 
-    const appointmentsArray = [...state.days[dayIndex].appointments];
-    if (id && !appointmentsArray.includes(id)) appointmentsArray.push(id);
+    if (id && !appointmentsList.includes(id)) appointmentsList.push(id);
 
-    let remainingSpots = appointmentsArray.length;
+    let remainingSpots = appointmentsList.length;
 
-    appointmentsArray.forEach(id => {
+    appointmentsList.forEach(id => {
       if (appointments[id].interview) remainingSpots--;
     });
 
