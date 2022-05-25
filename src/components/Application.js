@@ -7,24 +7,22 @@ import "components/Application.scss";
 import { getAppointmentsForDay, getInterviewersForDay, getInterview } from "helpers/selectors";
 import useApplicationData from "hooks/useApplicationData";
 
-export default function Application() {
+export default () => {
 
-  const { state, setDay, bookInterview, cancelInterview } = useApplicationData();
+  const { state, setDay, updateInterview } = useApplicationData();
 
   const appointments = getAppointmentsForDay(state, state.day);
-  const interviewers = getInterviewersForDay(state, state.day);
+  // const interviewers = getInterviewersForDay(state, state.day);
 
   const schedule = appointments.map(appointment => {
-    const interview = getInterview(state, appointment.interview);
     return (
       <Appointment
         key={appointment.id}
         id={appointment.id}
         time={appointment.time}
-        interview={interview}
-        interviewers={interviewers}
-        bookInterview={bookInterview}
-        cancelInterview={cancelInterview}
+        interviewers={getInterviewersForDay(state, state.day)}
+        interview={getInterview(state, appointment.interview)}
+        updateInterview={updateInterview}
       />
     );
   });
@@ -57,4 +55,4 @@ export default function Application() {
       </section>
     </main>
   );
-}
+};
