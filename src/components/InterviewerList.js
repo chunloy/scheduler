@@ -5,7 +5,7 @@ import InterviewerListItem from "./InterviewerListItem";
 
 import "components/InterviewerList.scss";
 
-export default (props) => {
+const InterviewerList = (props) => {
   const interviewerListItems = props.interviewers.map(interviewer => {
     return (
       <InterviewerListItem
@@ -13,7 +13,7 @@ export default (props) => {
         name={interviewer.name}
         avatar={interviewer.avatar}
         selected={props.value === interviewer.id}
-        setInterviewer={() => props.onChange(interviewer)} //jc bandaid interviewer.id
+        setInterviewer={() => props.onChange(interviewer)}
       />
     );
   });
@@ -31,3 +31,5 @@ export default (props) => {
 InterviewerList.propTypes = {
   interviewers: PropTypes.array.isRequired
 };
+
+export default InterviewerList;
