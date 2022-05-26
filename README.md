@@ -1,7 +1,7 @@
 # Interview Scheduler
 The Lighthouse Interview Scheduler App! Students can book interviews with mentors Monday through Friday.
 
-##The Application in Action
+## The Application in Action
 ![Screenshot1](https://user-images.githubusercontent.com/101907461/170414966-c93be33b-7c2a-4fa5-ad40-26e2d874fe6c.gif)
 ## Setup
 
