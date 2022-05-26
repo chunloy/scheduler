@@ -44,16 +44,17 @@ export default () => {
   //<=== update Interview: updates db by adding a new interview, or deleting an interview ===>
   const updateInterview = (id, interview = null) => {
 
-    //copy objects before updating
-    const appointment = { ...state.appointments[id], interview: { ...interview } };
-    const appointments = { ...state.appointments, [id]: appointment };
-    const days = updateSpots(state, appointments);
-
     //update db with new info
     return (interview ?
       axios.put(`api/appointments/${id}`, { interview }) :
       axios.delete(`api/appointments/${id}`))
       .then(() => {
+
+        //copy objects before updating
+        const appointment = { ...state.appointments[id], interview };
+        const appointments = { ...state.appointments, [id]: appointment };
+        const days = updateSpots(state, appointments);
+
         setState(prev => ({ ...prev, appointments, days }));
       });
   };
