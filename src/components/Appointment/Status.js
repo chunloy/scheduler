@@ -1,6 +1,6 @@
 import React from "react";
 
-export default Status = (props) => {
+export default (props) => {
   return (
     <main className="appointment__card appointment__card--status">
       <img
