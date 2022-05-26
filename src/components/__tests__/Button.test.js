@@ -38,9 +38,9 @@ it("renders a clickable button", () => {
 
   const button = getByText("Clickable");
 
-  fireEvent.click(button);
+  fireEvent.click(button); //click button
 
-  expect(handleClick).toHaveBeenCalledTimes(1);
+  expect(handleClick).toHaveBeenCalledTimes(1); //verify click
 });
 
 it("renders a disabled button", () => {
@@ -53,7 +53,7 @@ it("renders a disabled button", () => {
 
   const button = getByText("Disabled");
 
-  fireEvent.click(button);
+  fireEvent.click(button); //attempt to click button
 
-  expect(handleClick).toHaveBeenCalledTimes(0);
+  expect(handleClick).toHaveBeenCalledTimes(0); //verify no click
 });
