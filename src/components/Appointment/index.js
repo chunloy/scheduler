@@ -26,7 +26,7 @@ const ERROR_DELETE = "ERROR_DELETE";
 export default (props) => {
   const { mode, transition, back } = useVisualMode(props.interview ? SHOW : EMPTY);
 
-  function save(name, interviewer) {
+  const save = (name, interviewer) => {
     const interview = {
       student: name,
       interviewer: interviewer.id
@@ -37,15 +37,15 @@ export default (props) => {
     props.updateInterview(props.id, interview)
       .then(() => transition(SHOW))
       .catch(() => transition(ERROR_SAVE, true));
-  }
+  };
 
-  function deleteInterview() {
+  const deleteInterview = () => {
     transition(DELETING, true);
 
     props.updateInterview(props.id)
       .then(() => transition(EMPTY))
       .catch(() => transition(ERROR_DELETE, true));
-  }
+  };
 
   return (
     <article className="appointment">
