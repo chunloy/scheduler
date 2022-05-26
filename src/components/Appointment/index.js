@@ -12,6 +12,7 @@ import useVisualMode from "hooks/useVisualMode";
 
 import "components/Appointment/styles.scss";
 
+//<=== Constants ===>
 const CONFIRM = "CONFIRM";
 const CREATE = "CREATE";
 const DELETING = "DELETING";
