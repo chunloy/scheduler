@@ -1,7 +1,7 @@
 describe("Appointments", () => {
   beforeEach(() => {
     cy.request("GET", "/api/debug/reset"); //db reset
-    cy.visit("/").as("root");//create alias before each test
+    cy.visit("/").as("root"); //create alias 
     cy.contains("Monday"); //verify day in DOM
   });
 

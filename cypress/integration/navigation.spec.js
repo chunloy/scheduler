@@ -1,7 +1,8 @@
 describe("Navigation", () => {
   beforeEach(() => {
-    //create alias before each test
-    cy.visit("/").as("root");
+    cy.request("GET", "/api/debug/reset"); //db reset
+    cy.visit("/").as("root"); //create alias 
+    cy.contains("Monday"); //verify day in DOM
   });
 
   it("should visit root", () => {
@@ -11,9 +12,6 @@ describe("Navigation", () => {
 
 
   it("should navigate to Tuesday", () => {
-    //visit root webpage
-    cy.get("@root");
-
     //find and click day list item tuesday
     cy.contains("[data-testid=day]", "Tuesday")
       .click()
