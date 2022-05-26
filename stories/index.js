@@ -3,8 +3,6 @@ import React, { Fragment } from "react";
 import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 
-import "index.scss";
-
 import Button from "components/Button";
 import DayListItem from "components/DayListItem";
 import DayList from "components/DayList";
@@ -18,6 +16,8 @@ import Confirm from "components/Appointment/Confirm";
 import Status from "components/Appointment/Status";
 import Error from "components/Appointment/Error";
 import Form from "components/Appointment/Form";
+
+import "index.scss";
 
 storiesOf("Button", module)
   .addParameters({
@@ -34,6 +34,7 @@ storiesOf("Button", module)
       Disabled
     </Button>
   ));
+
 
 storiesOf("DayListItem", module) //Initiates Storybook and registers our DayListItem component
   .addParameters({
@@ -64,6 +65,7 @@ const days = [
   },
 ];
 
+
 storiesOf("DayList", module)
   .addParameters({
     backgrounds: [{ name: "dark", value: "#222f3e", default: true }],
@@ -83,6 +85,7 @@ const interviewer = {
   name: "Sylvia Palmer",
   avatar: "https://i.imgur.com/LpaY82x.png"
 };
+
 
 storiesOf("InterviewerListItem", module)
   .addParameters({
@@ -120,6 +123,7 @@ const interviewers = [
   { id: 5, name: "Sven Jones", avatar: "https://i.imgur.com/twYrpay.jpg" }
 ];
 
+
 storiesOf("InterviewerList", module)
   .addParameters({
     backgrounds: [{ name: "dark", value: "#222f3e", default: true }]
@@ -141,6 +145,7 @@ storiesOf("InterviewerList", module)
       onChange={action("setInterviewer")}
     />
   ));
+
 
 storiesOf("Appointment", module)
   .addParameters({
