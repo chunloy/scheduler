@@ -15,8 +15,8 @@ The Lighthouse Interview Scheduler App! Users can book interviews with mentors M
 1. Create a new repository using this as a template.
 2. Clone your reposity onto your local device.
 3. Install dependencies using the `npm install` command.
-4. Start the web server using the `npm start` command. The app will be served at <http://localhost:8080/>.
-5. Go to <http://localhost:8080/> in your browser. 
+4. Start the web server using the `npm start` command. The app will be served at <http://localhost:8000/>.
+5. Go to <http://localhost:8000/> in your browser. 
 
 ## Dependencies
 
