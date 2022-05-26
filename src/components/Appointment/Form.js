@@ -3,21 +3,24 @@ import React, { useState } from "react";
 import Button from "components/Button";
 import InterviewerList from "components/InterviewerList";
 
-export default function Form(props) {
+export default Form = (props) => {
   const [student, setStudent] = useState(props.student || "");
   const [interviewer, setInterviewer] = useState(props.interviewer || null);
   const [error, setError] = useState("");
+
+  //reset states on cancel
   const reset = () => {
     setStudent("");
     setInterviewer(null);
     props.onCancel();
   };
 
+  //validate form on save
   const validateForm = () => {
     if (!student) return setError("Student name cannot be blank");
     if (!interviewer) return setError("Please select an interviewer");
 
-    setError("");
+    setError(""); //reset error state before saving
     props.onSave(student, interviewer);
   };
 
@@ -38,7 +41,7 @@ export default function Form(props) {
         </form>
         <InterviewerList
           interviewers={props.interviewers}
-          value={interviewer && interviewer.id} //jc bandaid
+          value={interviewer && interviewer.id}
           onChange={setInterviewer}
         />
       </section>
@@ -50,4 +53,4 @@ export default function Form(props) {
       </section>
     </main>
   );
-}
+};
