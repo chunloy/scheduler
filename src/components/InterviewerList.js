@@ -5,7 +5,7 @@ import InterviewerListItem from "./InterviewerListItem";
 
 import "components/InterviewerList.scss";
 
-function InterviewerList(props) {
+export default (props) => {
   const interviewerListItems = props.interviewers.map(interviewer => {
     return (
       <InterviewerListItem
@@ -26,10 +26,8 @@ function InterviewerList(props) {
       </ul>
     </section>
   );
-}
+};
 
 InterviewerList.propTypes = {
   interviewers: PropTypes.array.isRequired
 };
-
-export default InterviewerList;

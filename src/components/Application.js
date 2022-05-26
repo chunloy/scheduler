@@ -8,11 +8,8 @@ import { getAppointmentsForDay, getInterviewersForDay, getInterview } from "help
 import useApplicationData from "hooks/useApplicationData";
 
 export default () => {
-
   const { state, setDay, updateInterview } = useApplicationData();
-
   const appointments = getAppointmentsForDay(state, state.day);
-  // const interviewers = getInterviewersForDay(state, state.day);
 
   const schedule = appointments.map(appointment => {
     return (
