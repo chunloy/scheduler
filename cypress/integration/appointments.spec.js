@@ -5,6 +5,7 @@ describe("Appointments", () => {
     cy.contains("Monday"); //verify day in DOM
   });
 
+
   it("should book an interview", () => {
     //click add button
     cy.get("[alt=Add]")
@@ -51,6 +52,7 @@ describe("Appointments", () => {
     cy.contains(".appointment__card--show", "John Doe");
     cy.contains(".appointment__card--show", "Tori Malcolm");
   });
+
 
   it("should cancel an interview", () => {
     //click delete on first appointment

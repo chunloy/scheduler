@@ -5,6 +5,7 @@ describe("Navigation", () => {
     cy.contains("Monday"); //verify day in DOM
   });
 
+
   it("should visit root", () => {
     //visit root web page
     cy.get("@root");
