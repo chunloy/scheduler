@@ -20,13 +20,13 @@ The Lighthouse Interview Scheduler App! Users can book interviews with mentors M
 
 ## Dependencies
 
-*Axios
-*Classnames
-*Normalize.css
-*React
-*React-dom
-*React-scripts
-*Node v15.x
+- Axios
+- Classnames
+- Normalize.css
+- React
+- React-dom
+- React-scripts
+- Node v15.x
 
 ## Running Webpack Development Server
 
